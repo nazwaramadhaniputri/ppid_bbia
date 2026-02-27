@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return redirect()->route('admin.login');
+});
+
 Route::get('/ppid', function () {
     return view('ppid');
 });

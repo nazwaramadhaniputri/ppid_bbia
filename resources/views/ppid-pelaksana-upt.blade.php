@@ -1,16 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="page-header">
+<div class="page-header">
+    <div class="page-header-content">
         <h1>PPID Pelaksana UPT</h1>
         <div class="breadcrumb">
-            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/tentang-ppid') }}">Tentang PPID</a> / PPID Pelaksana UPT
+            <a href="{{ url('/ppid') }}">Beranda</a>
+            <span>›</span>
+            <span>PPID Pelaksana UPT</span>
         </div>
     </div>
-    
-    <div class="content-section">
-        <div class="content-card">
+</div>
+
+<div class="content-section">
+    <div class="content-full">
+        <div class="service-detail">
+            <div class="service-icon-large">
+                <img src="{{ asset('images/upt.png') }}" alt="PPID Pelaksana UPT">
+            </div>
+        </div>
+        
+        <div class="service-content">
             <h2>PPID Pelaksana UPT di Lingkungan BBIA</h2>
             <p>PPID Pelaksana Unit Pelaksana Teknis (UPT) di lingkungan Balai Besar Industri Agro (BBIA) bertanggung jawab atas pelaksanaan tugas PPID di unit-unit kerja yang ada di bawah koordinasi BBIA.</p>
             
@@ -30,11 +40,15 @@
                             </div>
                             <div class="info-row">
                                 <span class="info-label">Alamat:</span>
-                                <span class="info-value">Jl. Ir. H. Juanda No. 11, Bogor</span>
+                                <span class="info-value">Jl. Industri No. 1, Jakarta</span>
                             </div>
                             <div class="info-row">
                                 <span class="info-label">Telepon:</span>
                                 <span class="info-value">(0251) 8324068</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">ppid.upta@kemenperin.go.id</span>
                             </div>
                         </div>
                     </div>

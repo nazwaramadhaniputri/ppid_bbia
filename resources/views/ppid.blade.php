@@ -70,9 +70,6 @@
                     <li class="nav-item">
                         <a href="{{ url('/form-permohonan') }}" class="btn btn-primary">Permohonan Informasi</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.login') }}" class="btn btn-outline">Admin</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -194,7 +191,7 @@
                         </div>
                         <div class="news-content">
                             <span class="news-date">{{ $berita->tanggal_publikasi ? $berita->tanggal_publikasi->format('d F Y') : $berita->created_at->format('d F Y') }}</span>
-                            <h3><a href="{{ url('/berita/detail/' . $berita->slug) }}">{{ $berita->judul }}</a></h3>
+                            <h3>{{ $berita->judul }}</h3>
                             <p>{{ \Illuminate\Support\Str::limit(strip_tags($berita->konten), 100) }}</p>
                             <a href="{{ url('/berita/detail/' . $berita->slug) }}" class="read-more">Baca Selengkapnya →</a>
                         </div>

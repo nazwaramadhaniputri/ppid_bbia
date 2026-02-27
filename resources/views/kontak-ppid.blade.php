@@ -55,56 +55,25 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="telepon">Telepon</label>
-                        <input type="tel" id="telepon" name="telepon">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subjek">Subjek *</label>
-                        <input type="text" id="subjek" name="subjek" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="pesan">Pesan *</label>
-                        <textarea id="pesan" name="pesan" rows="5" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-                </form>
-            </div>
-            
-            <h2>Media Sosial</h2>
-            <p>Ikuti kami di media sosial untuk update terkini informasi PPID BBIA:</p>
-            
-            <div class="social-links">
-                <a href="https://www.facebook.com/bbia.kemenperin" target="_blank" class="social-link">
-                    <img src="{{ asset('images/facebook.jpg') }}" alt="Facebook"> Facebook
-                </a>
-                <a href="https://twitter.com/bbia_kemenperin" target="_blank" class="social-link">
-                    <img src="{{ asset('images/twitter.jpg') }}" alt="Twitter"> Twitter
-                </a>
-                <a href="https://www.instagram.com/bbia.kemenperin" target="_blank" class="social-link">
-                    <img src="{{ asset('images/instagram.jpg') }}" alt="Instagram"> Instagram
-                </a>
-                <a href="https://www.youtube.com/c/BalaiBesarIndustriAgro" target="_blank" class="social-link">
-                    <img src="{{ asset('images/youtube.jpg') }}" alt="YouTube"> YouTube
-                </a>
-            </div>
         </div>
     </div>
 </div>
 
 <style>
 .page-header {
-    background: linear-gradient(135deg, #1a3a5f, #2c5282);
+    background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
     color: white;
     padding: 40px 0;
-    margin-bottom: 40px;
+    margin: 0 0 40px 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+.page-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
 }
 
 .page-header h1 {
@@ -128,82 +97,88 @@
 }
 
 .content-section {
-    max-width: 800px;
+    width: 100%;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.content-full {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 60px 40px;
+    background: transparent;
 }
 
-.content-card {
-    background: white;
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.content-card h2 {
+.content-full h2 {
     color: #1a3a5f;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
-    margin-bottom: 15px;
-    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-top: 40px;
 }
 
-.content-card h2:first-child {
+.content-full h2:first-child {
     margin-top: 0;
 }
 
-.content-card p {
+.content-full p {
     color: #333;
-    line-height: 1.6;
-    margin-bottom: 15px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 16px;
 }
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .contact-card {
-    background: #f8f9fa;
-    border: 2px solid #1a3a5f;
-    border-radius: 10px;
+    background: rgba(26, 82, 130, 0.1);
+    border: 1px solid rgba(26, 82, 130, 0.2);
+    border-radius: 15px;
     padding: 30px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .contact-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 20px;
+    margin-bottom: 20px;
 }
 
 .contact-icon img {
-    width: 100%;
-    height: 100%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
     object-fit: cover;
+    border: 3px solid #1a3a5f;
 }
 
-.contact-card h3 {
+.contact-info h3 {
     color: #1a3a5f;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-.contact-card p {
+.contact-info p {
     color: #333;
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
 }
 
 .form-section {
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 30px;
-    margin: 20px 0;
+    background: transparent;
+    padding: 0;
+    margin: 0;
 }
 
 .contact-form {

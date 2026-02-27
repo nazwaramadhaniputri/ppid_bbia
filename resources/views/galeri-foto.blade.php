@@ -1,16 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="page-header">
+<div class="page-header">
+    <div class="page-header-content">
         <h1>Galeri Foto</h1>
         <div class="breadcrumb">
-            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/tentang-ppid') }}">Tentang PPID</a> / Galeri Foto
+            <a href="{{ url('/ppid') }}">Beranda</a>
+            <span>›</span>
+            <span>Galeri Foto</span>
         </div>
     </div>
-    
-    <div class="content-section">
-        <div class="content-card">
+</div>
+
+<div class="content-section">
+    <div class="content-full">
+        <div class="service-detail">
+            <div class="service-icon-large">
+                <img src="{{ asset('images/galeri.png') }}" alt="Galeri Foto">
+            </div>
+        </div>
+        
+        <div class="service-content">
             <h2>Dokumentasi Kegiatan PPID BBIA</h2>
             <p>Berikut adalah dokumentasi kegiatan PPID BBIA dalam memberikan layanan informasi publik kepada masyarakat.</p>
             
