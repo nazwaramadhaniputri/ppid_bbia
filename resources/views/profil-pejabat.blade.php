@@ -5,75 +5,37 @@
     <div class="page-header-content">
         <h1>Profil Pejabat</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/tentang-ppid') }}">Tentang PPID</a> / Profil Pejabat
         </div>
     </div>
 </div>
 
 <div class="content-section">
     <div class="content-full">
-        <h2>Pejabat Pengelola Informasi dan Dokumentasi BBIA</h2>
+        @php
+            $profils = \App\Models\Profil::where('is_active', true)
+                ->where('kategori', 'Profil Pejabat')
+                ->orderBy('urutan')
+                ->get();
+        @endphp
         
-        <div class="profile-grid">
+        @forelse($profils as $profil)
+            <div class="pejabat-content">
+                <h2>{{ $profil->judul }}</h2>
+                <div>{!! $profil->konten !!}</div>
+            </div>
+        @empty
             <div class="profile-card">
                 <div class="profile-photo">
                     <img src="{{ asset('images/bbia.jpg') }}" alt="PPID BBIA">
                 </div>
                 <div class="profile-info">
-                    <h3>Nama Pejabat</h3>
-                    <p class="position">Pejabat Pengelola Informasi dan Dokumentasi</p>
+                    <h3>Informasi Profil Pejabat</h3>
+                    <p class="position">Sedang dalam pembaruan</p>
                     <p class="institution">Balai Besar Industri Agro</p>
-                    <p class="ministry">Kementerian Perindustrian</p>
                 </div>
             </div>
-        </div>
-        
-        <h2>Tugas dan Tanggung Jawab</h2>
-            <p>Sebagai PPID BBIA, pejabat ini memiliki tugas dan tanggung jawab:</p>
-            <ul>
-                <li>Menyediakan akses informasi publik sesuai ketentuan perundang-undangan</li>
-                <li>Melakukan verifikasi dan konfirmasi informasi publik</li>
-                <li>Menetapkan standar layanan informasi publik</li>
-                <li>Melakukan pemutakhiran informasi publik secara berkala</li>
-                <li>Menyediakan mekanisme penanganan sengketa informasi</li>
-                <li>Membuat laporan pelaksanaan tugas PPID</li>
-            </ul>
-            
-            <h2>Kontak Resmi</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <strong>Alamat:</strong>
-                    <p>Jl. Ir. H. Juanda No. 11, Bogor 16122</p>
-                </div>
-                <div class="contact-item">
-                    <strong>Telepon:</strong>
-                    <p>(0251) 8324068</p>
-                </div>
-                <div class="contact-item">
-                    <strong>Email:</strong>
-                    <p>cabi@bbia.go.id</p>
-                </div>
-                <div class="contact-item">
-                    <strong>Website:</strong>
-                    <p><a href="https://bbia.go.id" target="_blank">https://bbia.go.id</a></p>
-                </div>
-            </div>
-            
-            <h2>Jam Layanan</h2>
-            <div class="service-hours">
-                <div class="hours-item">
-                    <strong>Senin - Kamis:</strong>
-                    <p>08:00 - 16:00 WIB</p>
-                </div>
-                <div class="hours-item">
-                    <strong>Jumat:</strong>
-                    <p>08:00 - 15:30 WIB</p>
-                </div>
-                <div class="hours-item">
-                    <strong>Sabtu - Minggu:</strong>
-                    <p>Tutup</p>
-                </div>
-            </div>
-        </div>
+        @endforelse
     </div>
 </div>
 

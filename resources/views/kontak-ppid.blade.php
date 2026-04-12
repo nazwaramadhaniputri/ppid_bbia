@@ -5,47 +5,34 @@
     <div class="page-header-content">
         <h1>Kontak PPID</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/tentang-ppid') }}">Tentang PPID</a> / Kontak PPID
         </div>
     </div>
 </div>
 
 <div class="content-section">
     <div class="content-full">
-        <h2>Hubungi PPID BBIA</h2>
-        <p>PPID BBIA siap melayani kebutuhan informasi publik Anda. Silakan hubungi kami melalui berbagai kanal yang tersedia.</p>
+        @php
+            $profils = \App\Models\Profil::where('is_active', true)
+                ->where('kategori', 'Kontak PPID')
+                ->orderBy('urutan')
+                ->get();
+        @endphp
         
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <img src="{{ asset('images/phone.jpg') }}" alt="Phone">
-                </div>
-                <h3>Telepon</h3>
-                <p>(0251) 8324068</p>
-                <p>Senin - Jumat, 08:00 - 16:00 WIB</p>
+        @forelse($profils as $profil)
+            <div class="kontak-content">
+                <h2>{{ $profil->judul }}</h2>
+                <div>{!! $profil->konten !!}</div>
             </div>
-            
+        @empty
             <div class="contact-card">
-                <div class="contact-icon">
-                    <img src="{{ asset('images/email.jpg') }}" alt="Email">
-                </div>
-                <h3>Email</h3>
-                <p>cabi@bbia.go.id</p>
-                <p>ppid@bbia.go.id</p>
+                <h3>Informasi Kontak PPID</h3>
+                <p>Informasi kontak sedang dalam pembaruan.</p>
             </div>
-            
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <img src="{{ asset('images/location.jpg') }}" alt="Location">
-                </div>
-                <h3>Alamat</h3>
-                <p>Jl. Ir. H. Juanda No. 11</p>
-                <p>Bogor 16122</p>
-                <p>Jawa Barat, Indonesia</p>
-            </div>
-        </div>
+        @endforelse
     </div>
 </div>
-            
+
 <style>
 .page-header {
     background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
@@ -148,14 +135,14 @@
     border: 3px solid #1a3a5f;
 }
 
-.contact-card h3 {
+.contact-info h3 {
     color: #1a3a5f;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 15px;
 }
 
-.contact-card p {
+.contact-info p {
     color: #333;
     font-size: 16px;
     line-height: 1.5;

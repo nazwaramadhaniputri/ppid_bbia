@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page-header">
-    <div class="page-header-content">
+<div class="container">
+    <div class="page-header">
         <h1>Laporan Survey Kepuasan Masyarakat</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/laporan') }}">Laporan</a> / Laporan Survey Kepuasan Masyarakat
         </div>
     </div>
-</div>
-
-<div class="content-section">
-    <div class="content-full">
-        <h2>Laporan Survey Kepuasan Masyarakat PPID BBIA</h2>
-        <p>Berikut adalah laporan hasil survey kepuasan masyarakat terhadap layanan informasi publik PPID BBIA yang dilaksanakan secara berkala.</p>
+    
+    <div class="content-section">
+        <div class="content-card">
+            <h2>Laporan Survey Kepuasan Masyarakat PPID BBIA</h2>
+            <p>Berikut adalah laporan hasil survey kepuasan masyarakat terhadap layanan informasi publik PPID BBIA yang dilaksanakan secara berkala.</p>
             
             <div class="survey-grid">
                 <div class="survey-item">
@@ -187,19 +187,10 @@
 
 <style>
 .page-header {
-    background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
+    background: linear-gradient(135deg, #1a3a5f, #2c5282);
     color: white;
     padding: 40px 0;
-    margin: 0 0 40px 0;
-    width: 100%;
-    left: 0;
-    right: 0;
-}
-
-.page-header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 60px;
+    margin-bottom: 40px;
 }
 
 .page-header h1 {
@@ -223,35 +214,40 @@
 }
 
 .content-section {
-    width: 100%;
-    padding: 0 20px;
-    min-height: 60vh;
-}
-
-.content-full {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 60px 40px;
-    background: transparent;
 }
 
-.content-full h2 {
+.content-card {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-card h2 {
     color: #1a3a5f;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 40px;
+    margin-bottom: 15px;
+    margin-top: 30px;
 }
 
-.content-full h2:first-child {
+.content-card h2:first-child {
     margin-top: 0;
 }
 
-.content-full p {
+.content-card p {
     color: #333;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.content-card ul {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding-left: 20px;
 }
 
 .content-card li {
@@ -269,14 +265,14 @@
     background: #f8f9fa;
     border: 2px solid #1a3a5f;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
 }
 
 .survey-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .survey-header h3 {
@@ -289,35 +285,35 @@
 .survey-period {
     background: #1a3a5f;
     color: white;
-    padding: 4px 12px;
-    border-radius: 15px;
-    font-size: 12px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
     font-weight: 600;
 }
 
 .survey-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
 .stat-item {
     background: #1a3a5f;
     color: white;
-    border-radius: 8px;
-    padding: 12px 8px;
+    border-radius: 10px;
+    padding: 20px;
     text-align: center;
 }
 
 .stat-number {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 .stat-label {
-    font-size: 11px;
+    font-size: 14px;
     opacity: 0.8;
 }
 

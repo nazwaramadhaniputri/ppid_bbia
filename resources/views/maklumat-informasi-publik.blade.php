@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page-header">
-    <div class="page-header-content">
+<div class="container">
+    <div class="page-header">
         <h1>Maklumat Informasi Publik</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/standar-layanan') }}">Standar Layanan</a> / Maklumat Informasi Publik
         </div>
     </div>
-</div>
-
-<div class="content-section">
-    <div class="content-full">
-        <h2>Maklumat Informasi Publik PPID BBIA</h2>
-        <p>Berikut adalah maklumat informasi publik PPID BBIA yang disusun sesuai dengan Peraturan Komisi Informasi Nomor 1 Tahun 2010 dan Peraturan Komisi Informasi Nomor 1 Tahun 2013.</p>
+    
+    <div class="content-section">
+        <div class="content-card">
+            <h2>Maklumat Informasi Publik PPID BBIA</h2>
+            <p>Berikut adalah maklumat informasi publik PPID BBIA yang disusun sesuai dengan Peraturan Komisi Informasi Nomor 1 Tahun 2010 dan Peraturan Komisi Informasi Nomor 1 Tahun 2013.</p>
             
             <div class="motto-grid">
                 <div class="motto-item">
@@ -112,19 +112,10 @@
 
 <style>
 .page-header {
-    background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
+    background: linear-gradient(135deg, #1a3a5f, #2c5282);
     color: white;
     padding: 40px 0;
-    margin: 0 0 40px 0;
-    width: 100%;
-    left: 0;
-    right: 0;
-}
-
-.page-header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 60px;
+    margin-bottom: 40px;
 }
 
 .page-header h1 {
@@ -148,35 +139,33 @@
 }
 
 .content-section {
-    width: 100%;
-    padding: 0 20px;
-    min-height: 60vh;
-}
-
-.content-full {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 60px 40px;
-    background: transparent;
 }
 
-.content-full h2 {
+.content-card {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-card h2 {
     color: #1a3a5f;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 40px;
+    margin-bottom: 15px;
+    margin-top: 30px;
 }
 
-.content-full h2:first-child {
+.content-card h2:first-child {
     margin-top: 0;
 }
 
-.content-full p {
+.content-card p {
     color: #333;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
 .motto-grid {

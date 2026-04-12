@@ -1,173 +1,136 @@
 @extends('layouts.app')
 
-@section('title', 'Prosedur Permohonan Informasi - PPID BBIA')
-
 @section('content')
-<div class="page-header">
-    <div class="page-header-content">
+<div class="container">
+    <div class="page-header">
         <h1>Prosedur Permohonan Informasi</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/standar-layanan') }}">Standar Layanan</a> / Prosedur Permohonan Informasi
         </div>
     </div>
-</div>
-
-<div class="content-section">
-    <div class="content-full">
-        <h2>Prosedur Permohonan Informasi Publik PPID BBIA</h2>
-        <p>Berikut adalah prosedur lengkap untuk mengajukan permohonan informasi publik kepada PPID BBIA sesuai dengan Peraturan Komisi Informasi Nomor 1 Tahun 2010.</p>
-        
-        <div class="infografis-container">
-            <img src="{{ asset('images/permohonan informasi.jpg') }}" alt="Prosedur Permohonan Informasi" class="infografis-img">
-        </div>
-        
-        <div class="procedure-flow">
-            <div class="flow-step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Pengisian Formulir Permohonan</h3>
-                    <p>Pemohon mengisi formulir permohonan informasi publik secara lengkap dan benar:</p>
-                    <ul>
-                        <li>Formulir dapat diisi secara online melalui website PPID BBIA</li>
-                        <li>Formulir dapat diisi langsung di kantor PPID BBIA</li>
-                        <li>Formulir dapat diunduh dan diisi kemudian dikirim via email</li>
-                    </ul>
-                    <div class="required-docs">
-                        <h4>Dokumen yang Diperlukan:</h4>
+    
+    <div class="content-section">
+        <div class="content-card">
+            <h2>Prosedur Permohonan Informasi Publik</h2>
+            <p>Berikut adalah prosedur lengkap untuk mengajukan permohonan informasi publik kepada PPID BBIA.</p>
+            
+            <div class="procedure-flow">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Persiapan Permohonan</h3>
+                        <p>Persiapkan dokumen dan informasi yang diperlukan untuk permohonan informasi.</p>
                         <ul>
-                            <li>Fotokopi KTP/SIM/Paspor yang masih berlaku</li>
+                            <li>Identitas diri (KTP/SIM/Paspor)</li>
+                            <li>Formulir permohonan informasi</li>
                             <li>Surat kuasa (jika diwakilkan)</li>
-                            <li>Dokumen pendukung lainnya (jika diperlukan)</li>
+                            <li>Materai Rp 10.000 (untuk permohonan tertulis)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Pengajuan Permohonan</h3>
+                        <p>Ajukan permohonan informasi melalui salah satu kanal yang tersedia:</p>
+                        <ul>
+                            <li>Langsung datang ke kantor PPID BBIA</li>
+                            <li>Email: ppid@bbia.go.id</li>
+                            <li>Website: ppid.bbia.go.id</li>
+                            <li>WhatsApp: +62 812-3456-7890</li>
+                            <li>Surat pos ke alamat PPID BBIA</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Verifikasi Permohonan</h3>
+                        <p>PPID BBIA akan melakukan verifikasi terhadap permohonan yang diajukan:</p>
+                        <ul>
+                            <li>Kelengkapan dokumen</li>
+                            <li>Kesesuaian dengan kewenangan PPID BBIA</li>
+                            <li>Kejelasan informasi yang diminta</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Proses Permohonan</h3>
+                        <p>Permohonan akan diproses sesuai dengan ketentuan:</p>
+                        <ul>
+                            <li>Maksimal 10 hari kerja sejak diterima</li>
+                            <li>Dapat diperpanjang maksimal 7 hari kerja</li>
+                            <li>Pemberitahuan perpanjangan waktu</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Penyelesaian Permohonan</h3>
+                        <p>Hasil permohonan akan disampaikan melalui:</p>
+                        <ul>
+                            <li>Informasi disediakan sesuai format yang diminta</li>
+                            <li>Penolakan dengan alasan yang jelas</li>
+                            <li>Rujukan ke instansi terkait (jika perlu)</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
-            <div class="flow-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Verifikasi dan Registrasi</h3>
-                    <p>PPID BBIA akan melakukan verifikasi terhadap permohonan yang masuk:</p>
+            <h2>Formulir Permohonan</h2>
+            <div class="form-section">
+                <div class="form-info">
+                    <h3>📄 Formulir Permohonan Informasi</h3>
+                    <p>Unduh formulir permohonan informasi publik PPID BBIA:</p>
+                    <a href="#" class="btn-link">Download Formulir PDF</a>
+                </div>
+                
+                <div class="form-guide">
+                    <h3>📖 Panduan Pengisian</h3>
+                    <p>Panduan lengkap pengisian formulir permohonan informasi:</p>
+                    <a href="#" class="btn-link">Download Panduan PDF</a>
+                </div>
+            </div>
+            
+            <h2>Waktu dan Biaya</h2>
+            <div class="time-cost-grid">
+                <div class="info-card">
+                    <h3>⏰ Waktu Layanan</h3>
                     <ul>
-                        <li>Kelengkapan data pemohon</li>
-                        <li>Kesesuaian format permohonan</li>
-                        <li>Klarifikasi informasi yang diminta (jika diperlukan)</li>
-                        <li>Pemberian nomor registrasi/tiket permohonan</li>
+                        <li><strong>Proses Permohonan:</strong> 10 hari kerja</li>
+                        <li><strong>Perpanjangan:</strong> Maksimal 7 hari kerja</li>
+                        <li><strong>Penyelesaian:</strong> Sesuai kesepakatan</li>
+                        <li><strong>Keberatan:</strong> 30 hari kerja</li>
                     </ul>
-                    <div class="timeline-info">
-                        <strong>Waktu Verifikasi:</strong> Maksimal 2 hari kerja
-                    </div>
                 </div>
-            </div>
-            
-            <div class="flow-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Proses Permohonan</h3>
-                    <p>Setelah verifikasi, permohonan akan diproses sesuai dengan jenis informasi yang diminta:</p>
+                
+                <div class="info-card">
+                    <h3>💰 Biaya Layanan</h3>
                     <ul>
-                        <li>Informasi yang tersedia langsung: 1-2 hari kerja</li>
-                        <li>Informasi perlu konsolidasi: 3-5 hari kerja</li>
-                        <li>Informasi kompleks: maksimal 10 hari kerja</li>
-                        <li>Perpanjangan waktu: maksimal 7 hari kerja (diberitahukan tertulis)</li>
+                        <li><strong>Permohonan Informasi:</strong> Gratis</li>
+                        <li><strong>Penggandaan:</strong> Rp 200/halaman</li>
+                        <li><strong>Penyimpanan Digital:</strong> Rp 5.000/MB</li>
+                        <li><strong>Pengiriman:</strong> Sesuai tarif jasa</li>
                     </ul>
-                    <div class="note-box">
-                        <p><strong>Catatan:</strong> Pemohon akan diberikan informasi mengenai estimasi waktu penyelesaian permohonan.</p>
-                    </div>
                 </div>
             </div>
             
-            <div class="flow-step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>Penyelesaian Permohonan</h3>
-                    <p>Permohonan dapat diselesaikan dengan beberapa cara:</p>
-                    <div class="outcome-options">
-                        <div class="outcome-item">
-                            <h4>✅ Disetujui</h4>
-                            <p>Informasi diberikan sesuai permohonan dalam bentuk hard copy/soft copy</p>
-                        </div>
-                        <div class="outcome-item">
-                            <h4>🔄 Diberikan Sebagian</h4>
-                            <p>Informasi diberikan sebagian dengan alasan yang jelas</p>
-                        </div>
-                        <div class="outcome-item">
-                            <h4>❌ Ditolak</h4>
-                            <p>Permohonan ditolak dengan alasan sesuai undang-undang</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flow-step">
-                <div class="step-number">5</div>
-                <div class="step-content">
-                    <h3>Pemberitahuan Hasil</h3>
-                    <p>PPID BBIA akan memberitahukan hasil permohonan kepada pemohon:</p>
-                    <ul>
-                        <li>Surat pemberitahuan hasil permohonan</li>
-                        <li>Informasi yang diminta (jika disetujui)</li>
-                        <li>Alasan penolakan/pembatasan (jika ditolak/sebagian)</li>
-                        <li>Informasi mengenai hak mengajukan keberatan</li>
-                    </ul>
-                    <div class="contact-info">
-                        <strong>Informasi lebih lanjut:</strong><br>
-                        📞 (0251) 8323880<br>
-                        📧 ppid.bbia@kemenperin.go.id
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="info-grid">
-            <div class="info-box">
-                <h3>📋 Syarat Permohonan</h3>
+            <h2>Kontak Bantuan</h2>
+            <div class="contact-box">
+                <p>Untuk bantuan prosedur permohonan informasi, hubungi:</p>
                 <ul>
-                    <li>Warga negara Indonesia atau badan hukum Indonesia</li>
-                    <li>Usia minimal 18 tahun atau sudah menikah</li>
-                    <li>Mengisi formulir permohonan dengan lengkap</li>
-                    <li>Menyertakan identitas diri yang valid</li>
-                    <li>Mencantumkan tujuan penggunaan informasi</li>
+                    <li><strong>Telepon:</strong> (0251) 8324068</li>
+                    <li><strong>Email:</strong> ppid@bbia.go.id</li>
+                    <li><strong>WhatsApp:</strong> +62 812-3456-7890</li>
+                    <li><strong>Alamat:</strong> Jl. Ir. H. Juanda No. 11, Bogor</li>
                 </ul>
-            </div>
-            
-            <div class="info-box">
-                <h3>⏰ Waktu Layanan</h3>
-                <ul>
-                    <li><strong>Penerimaan:</strong> Senin - Jumat, 08:00 - 16:00 WIB</li>
-                    <li><strong>Proses:</strong> Maksimal 10 hari kerja</li>
-                    <li><strong>Perpanjangan:</strong> Maksimal 7 hari kerja</li>
-                    <li><strong>Keberatan:</strong> 20 hari kerja setelah pemberitahuan</li>
-                </ul>
-            </div>
-            
-            <div class="info-box">
-                <h3>💰 Biaya Layanan</h3>
-                <ul>
-                    <li><strong>Permohonan dasar:</strong> Gratis</li>
-                    <li><strong>Penyalinan hard copy:</strong> Rp 200 per halaman</li>
-                    <li><strong>CD/DVD:</strong> Rp 5.000 per keping</li>
-                    <li><strong>Flashdisk:</strong> Sesuai harga pasar</li>
-                    <li><strong>Jasa kurir:</strong> Sesuai tarif yang berlaku</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="action-section">
-            <h3>📝 Ajukan Permohonan Sekarang</h3>
-            <p style="color: white;">Silakan ajukan permohonan informasi publik melalui formulir online kami:</p>
-            <div class="action-buttons">
-                <a href="{{ url('/form-permohonan') }}" class="btn btn-action">
-                    <i class="fas fa-file-alt"></i>
-                    Formulir Online
-                </a>
-                <a href="{{ url('/kontak-ppid') }}" class="btn btn-action">
-                    <i class="fas fa-phone"></i>
-                    Hubungi Kami
-                </a>
-                <a href="{{ url('/periksa-permohonan') }}" class="btn btn-action">
-                    <i class="fas fa-search"></i>
-                    Cek Status
-                </a>
             </div>
         </div>
     </div>
@@ -175,19 +138,10 @@
 
 <style>
 .page-header {
-    background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
+    background: linear-gradient(135deg, #1a3a5f, #2c5282);
     color: white;
     padding: 40px 0;
-    margin: 0 0 40px 0;
-    width: 100%;
-    left: 0;
-    right: 0;
-}
-
-.page-header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 60px;
+    margin-bottom: 40px;
 }
 
 .page-header h1 {
@@ -211,337 +165,192 @@
 }
 
 .content-section {
-    width: 100%;
-    padding: 0 20px;
-    min-height: 60vh;
-}
-
-.content-full {
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 60px 40px;
-    background: transparent;
 }
 
-.content-full h2 {
+.content-card {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content-card h2 {
     color: #1a3a5f;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 40px;
+    margin-bottom: 15px;
+    margin-top: 30px;
 }
 
-.content-full h2:first-child {
+.content-card h2:first-child {
     margin-top: 0;
 }
 
-.content-full p {
+.content-card p {
     color: #333;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
 }
 
-.infografis-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 30px auto;
-    padding: 20px;
-    background: transparent;
-    border-radius: 15px;
-    box-shadow: none;
-    border: none;
-    text-align: center;
+.content-card ul {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding-left: 20px;
 }
 
-.infografis-img {
-    max-width: 100%;
-    max-height: 600px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    object-position: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: block;
-}
-
-.infografis-img:hover {
-    transform: scale(1.02);
+.content-card li {
+    margin-bottom: 8px;
 }
 
 .procedure-flow {
-    margin: 40px 0;
+    display: grid;
+    gap: 30px;
+    margin: 30px 0;
 }
 
 .flow-step {
     display: flex;
-    gap: 30px;
-    margin-bottom: 40px;
-    padding: 30px;
-    background: rgba(26, 58, 95, 0.02);
-    border: 1px solid rgba(26, 58, 95, 0.1);
-    border-radius: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.flow-step:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    background: #f8f9fa;
+    border: 2px solid #1a3a5f;
+    border-radius: 10px;
+    padding: 25px;
 }
 
 .step-number {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #2c5282 0%, #1a3a5f 100%);
+    width: 50px;
+    height: 50px;
+    background: #1a3a5f;
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
-}
-
-.step-content {
-    flex: 1;
+    flex-shrink: 0;
 }
 
 .step-content h3 {
     color: #1a3a5f;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .step-content p {
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
     margin-bottom: 15px;
 }
 
 .step-content ul {
-    margin-bottom: 20px;
-    padding-left: 20px;
+    margin-bottom: 0;
 }
 
-.step-content li {
-    margin-bottom: 8px;
-    color: #333;
-    line-height: 1.6;
+.form-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
 }
 
-.required-docs, .timeline-info, .note-box, .contact-info {
-    background: rgba(44, 82, 130, 0.05);
-    border-left: 4px solid #2c5282;
-    padding: 15px 20px;
-    margin: 20px 0;
-    border-radius: 0 8px 8px 0;
+.form-info, .form-guide {
+    background: #f8f9fa;
+    border: 2px solid #1a3a5f;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
 }
 
-.required-docs h4, .timeline-info strong, .contact-info strong {
+.form-info h3, .form-guide h3 {
     color: #1a3a5f;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-.outcome-options {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin: 20px 0;
+.form-info p, .form-guide p {
+    margin-bottom: 15px;
 }
 
-.outcome-item {
-    background: white;
-    border: 1px solid #e1e5e9;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
+.btn-link {
+    color: #1a3a5f;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 16px;
+    border: 1px solid #1a3a5f;
+    border-radius: 5px;
+    font-size: 14px;
+    display: inline-block;
 }
 
-.outcome-item h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
+.btn-link:hover {
+    background: #1a3a5f;
+    color: white;
 }
 
-.info-grid {
+.time-cost-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 40px 0;
+    gap: 20px;
+    margin: 30px 0;
 }
 
-.info-box {
-    background: rgba(26, 58, 95, 0.02);
-    border: 1px solid rgba(26, 58, 95, 0.1);
+.info-card {
+    background: #f8f9fa;
+    border: 2px solid #1a3a5f;
     border-radius: 10px;
     padding: 25px;
 }
 
-.info-box h3 {
+.info-card h3 {
     color: #1a3a5f;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 15px;
 }
 
-.info-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.info-card ul {
+    margin-bottom: 0;
 }
 
-.info-box li {
+.info-card li {
     margin-bottom: 10px;
-    color: #333;
-    font-size: 14px;
-    line-height: 1.6;
 }
 
-.info-box li strong {
+.info-card li strong {
     color: #1a3a5f;
 }
 
-.action-section {
-    background: linear-gradient(135deg, #2c5282 0%, #1a3a5f 100%);
+.contact-box {
+    background: #1a3a5f;
     color: white;
-    padding: 40px;
-    border-radius: 15px;
-    text-align: center;
-    margin: 40px 0;
+    border-radius: 10px;
+    padding: 25px;
+    margin: 20px 0;
 }
 
-.action-section h3 {
-    font-size: 24px;
+.contact-box p {
+    color: white;
     margin-bottom: 15px;
 }
 
-.action-section p {
-    margin-bottom: 30px;
-    opacity: 0.9;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-action {
-    background-color: white;
-    color: #1a3a5f;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-width: 180px;
-    height: 50px;
-}
-
-.btn-action:hover {
-    background-color: #f8f9fa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.btn-primary {
-    background-color: white;
-    color: #1a3a5f;
-}
-
-.btn-primary:hover {
-    background-color: #f8f9fa;
-    transform: translateY(-1px);
-}
-
-.btn-outline {
-    background-color: transparent;
+.contact-box ul {
     color: white;
-    border: 2px solid white;
 }
 
-.btn-outline:hover {
-    background-color: white;
-    color: #1a3a5f;
-    transform: translateY(-1px);
+.contact-box li {
+    margin-bottom: 8px;
 }
 
-@media (max-width: 768px) {
-    .page-header-content {
-        padding: 0 20px;
-    }
-    
-    .content-full {
-        padding: 40px 20px;
-    }
-    
-    .flow-step {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-    }
-    
-    .step-number {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-        align-self: center;
-    }
-    
-    .outcome-options {
-        grid-template-columns: 1fr;
-    }
-    
-    .action-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .btn {
-        width: 200px;
-        justify-content: center;
-    }
-    
-    .btn-action {
-        width: 100%;
-        max-width: 200px;
-        padding: 12px 20px;
-        font-size: 14px;
-        min-width: 150px;
-        height: 45px;
-    }
-    
-    .infografis-container {
-        padding: 10px;
-        margin: 30px auto;
-    }
-    
-    .infografis-img {
-        border-radius: 8px;
-    }
+.contact-box li strong {
+    color: rgba(255, 255, 255, 0.8);
 }
 </style>
+
 @endsection

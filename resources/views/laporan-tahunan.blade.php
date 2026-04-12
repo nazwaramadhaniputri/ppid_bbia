@@ -3,433 +3,204 @@
 @section('content')
 <div class="page-header">
     <div class="page-header-content">
-        <h1>Laporan Tahunan PPID</h1>
+        <h1>Laporan Publik</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a>
+            <span>›</span>
+            <span>Laporan Publik</span>
         </div>
     </div>
 </div>
 
 <div class="content-section">
     <div class="content-full">
-        <h2>Laporan Tahunan PPID BBIA</h2>
-        <p>Berikut adalah laporan tahunan PPID BBIA yang berisi ringkasan kegiatan dan pencapaian kinerja dalam penyediaan layanan informasi publik.</p>
-            
-            <div class="report-grid">
-                <div class="report-item">
-                    <div class="report-header">
-                        <h3>Laporan Tahunan 2025</h3>
-                        <span class="report-year">2025</span>
-                    </div>
-                    <div class="report-stats">
-                        <div class="stat">
-                            <span class="stat-number">1,234</span>
-                            <span class="stat-label">Total Permohonan</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">1,189</span>
-                            <span class="stat-label">Diproses</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">98.5%</span>
-                            <span class="stat-label">Tingkat Kepuasan</span>
-                        </div>
-                    </div>
-                    <div class="report-actions">
-                        <a href="#" class="btn-link">Download PDF</a>
-                        <a href="#" class="btn-link">Ringkasan</a>
-                    </div>
-                </div>
-                
-                <div class="report-item">
-                    <div class="report-header">
-                        <h3>Laporan Tahunan 2024</h3>
-                        <span class="report-year">2024</span>
-                    </div>
-                    <div class="report-stats">
-                        <div class="stat">
-                            <span class="stat-number">1,156</span>
-                            <span class="stat-label">Total Permohonan</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">1,123</span>
-                            <span class="stat-label">Diproses</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">97.2%</span>
-                            <span class="stat-label">Tingkat Kepuasan</span>
-                        </div>
-                    </div>
-                    <div class="report-actions">
-                        <a href="#" class="btn-link">Download PDF</a>
-                        <a href="#" class="btn-link">Ringkasan</a>
-                    </div>
-                </div>
-                
-                <div class="report-item">
-                    <div class="report-header">
-                        <h3>Laporan Tahunan 2023</h3>
-                        <span class="report-year">2023</span>
-                    </div>
-                    <div class="report-stats">
-                        <div class="stat">
-                            <span class="stat-number">1,089</span>
-                            <span class="stat-label">Total Permohonan</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">1,067</span>
-                            <span class="stat-label">Diproses</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">96.8%</span>
-                            <span class="stat-label">Tingkat Kepuasan</span>
-                        </div>
-                    </div>
-                    <div class="report-actions">
-                        <a href="#" class="btn-link">Download PDF</a>
-                        <a href="#" class="btn-link">Ringkasan</a>
-                    </div>
-                </div>
+        <div class="service-detail">
+            <div class="service-icon-large">
+                <img src="{{ asset('images/statistik layanan.png') }}" alt="Laporan Publik">
             </div>
             
-            <h2>Statistik Perbandingan</h2>
-            <div class="comparison-chart">
-                <div class="chart-item">
-                    <h3>Trend Permohonan</h3>
-                    <div class="chart-bars">
-                        <div class="bar-item">
-                            <div class="bar" style="height: 80%"></div>
-                            <span>2023</span>
-                            <span class="value">1,089</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 85%"></div>
-                            <span>2024</span>
-                            <span class="value">1,156</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 100%"></div>
-                            <span>2025</span>
-                            <span class="value">1,234</span>
-                        </div>
+            <div class="service-content">
+                <h2>Laporan Publik PPID BBIA</h2>
+                <p>Berikut adalah daftar laporan publik PPID BBIA yang berisi informasi mengenai kinerja dan kegiatan dalam penyediaan layanan informasi publik.</p>
+                
+                @php
+                    $laporans = \App\Models\LaporanPublik::where('is_active', true)->orderBy('tahun', 'desc')->orderBy('kategori')->orderBy('judul')->get();
+                    $groupedLaporans = $laporans->groupBy('tahun');
+                @endphp
+                
+                @forelse($groupedLaporans as $tahun => $items)
+                    <div class="year-section">
+                        <h3 class="year-title">📅 Tahun {{ $tahun }}</h3>
+                        
+                        @php
+                            $categorizedItems = $items->groupBy('kategori');
+                        @endphp
+                        
+                        @foreach($categorizedItems as $kategori => $laporanItems)
+                            <div class="category-section">
+                                <h4 class="category-title">{{ $kategori }}</h4>
+                                
+                                <div class="report-grid">
+                                    @foreach($laporanItems as $laporan)
+                                        <div class="report-item">
+                                            <div class="report-header">
+                                                <h5>{{ $laporan->judul }}</h5>
+                                                <span class="report-badge">{{ $kategori }}</span>
+                                            </div>
+                                            
+                                            <div class="report-content">
+                                                <div class="report-info">
+                                                    <span class="info-item">📅 {{ $laporan->tahun }}</span>
+                                                    <span class="info-item">📁 {{ $kategori }}</span>
+                                                </div>
+                                                
+                                                @if($laporan->file_path)
+                                                    <div class="report-actions">
+                                                        <a href="{{ asset($laporan->file_path) }}" target="_blank" class="btn btn-primary btn-sm">
+                                                            📄 Download Laporan
+                                                        </a>
+                                                    </div>
+                                                @else
+                                                    <div class="no-file">
+                                                        <span style="color: #666; font-size: 0.9rem;">File tidak tersedia</span>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                </div>
-                
-                <div class="chart-item">
-                    <h3>Tingkat Kepuasan</h3>
-                    <div class="chart-bars">
-                        <div class="bar-item">
-                            <div class="bar" style="height: 96.8%"></div>
-                            <span>2023</span>
-                            <span class="value">96.8%</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 97.2%"></div>
-                            <span>2024</span>
-                            <span class="value">97.2%</span>
-                        </div>
-                        <div class="bar-item">
-                            <div class="bar" style="height: 98.5%"></div>
-                            <span>2025</span>
-                            <span class="value">98.5%</span>
-                        </div>
+                @empty
+                    <div class="info-box">
+                        <p>Belum ada laporan publik yang tersedia. Silakan kembali lagi nanti.</p>
                     </div>
-                </div>
-            </div>
-            
-            <h2>Indikator Kinerja</h2>
-            <div class="indicators-grid">
-                <div class="indicator-item">
-                    <h3>📊 Waktu Respon</h3>
-                    <div class="indicator-value">8.2 hari</div>
-                    <div class="indicator-desc">Rata-rata waktu penyelesaian permohonan</div>
-                </div>
+                @endforelse
                 
-                <div class="indicator-item">
-                    <h3>📈 Tingkat Keberhasilan</h3>
-                    <div class="indicator-value">96.4%</div>
-                    <div class="indicator-desc">Permohonan yang berhasil diproses</div>
+                <div class="action-buttons">
+                    <a href="{{ url('/form-permohonan') }}" class="btn btn-primary">Ajukan Permohonan Informasi</a>
+                    <a href="{{ url('/informasi-publik') }}" class="btn btn-outline">Lihat Informasi Publik</a>
                 </div>
-                
-                <div class="indicator-item">
-                    <h3>👥 Pengguna Layanan</h3>
-                    <div class="indicator-value">2,456</div>
-                    <div class="indicator-desc">Total pengguna layanan informasi</div>
-                </div>
-                
-                <div class="indicator-item">
-                    <h3>💬 Kepuasan Pelanggan</h3>
-                    <div class="indicator-value">4.6/5</div>
-                    <div class="indicator-desc">Skor kepuasan pelanggan</div>
-                </div>
-            </div>
-            
-            <h2>Informasi Tambahan</h2>
-            <div class="info-box">
-                <h3>📖 Catatan Laporan</h3>
-                <ul>
-                    <li>Laporan tahunan dibuat sesuai dengan Peraturan Komisi Informasi Nomor 1 Tahun 2010</li>
-                    <li>Data dikumpulkan dari sistem informasi PPID BBIA</li>
-                    <li>Laporan diverifikasi oleh internal audit BBIA</li>
-                    <li>Laporan disetujui oleh Kepala BBIA</li>
-                    <li>Laporan tersedia untuk umum sesuai prinsip keterbukaan informasi</li>
-                </ul>
             </div>
         </div>
     </div>
 </div>
 
 <style>
-.page-header {
-    background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
-    color: white;
-    padding: 40px 0;
-    margin: 0 0 40px 0;
-    width: 100%;
-    left: 0;
-    right: 0;
+.year-section {
+    margin: 2.5rem 0;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
 }
 
-.page-header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 60px;
+.year-title {
+    color: #0f2338;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.4rem;
 }
 
-.page-header h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 10px;
+.category-section {
+    margin-bottom: 2rem;
 }
 
-.breadcrumb {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-.breadcrumb a {
-    color: white;
-    text-decoration: none;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-.content-section {
-    width: 100%;
-    padding: 0 20px;
-    min-height: 60vh;
-}
-
-.content-full {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 40px;
-    background: transparent;
-}
-
-.content-full h2 {
-    color: #1a3a5f;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 40px;
-}
-
-.content-full h2:first-child {
-    margin-top: 0;
-}
-
-.content-full p {
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 16px;
+.category-title {
+    color: #2c5282;
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e1e8ed;
 }
 
 .report-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 30px 0;
+    gap: 1.5rem;
+    margin-top: 1rem;
 }
 
 .report-item {
-    background: #f8f9fa;
-    border: 2px solid #1a3a5f;
-    border-radius: 10px;
-    padding: 25px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
 .report-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    align-items: flex-start;
+    margin-bottom: 1rem;
 }
 
-.report-header h3 {
-    color: #1a3a5f;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.report-year {
-    background: #1a3a5f;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.report-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat-number {
-    display: block;
-    font-size: 20px;
-    font-weight: 700;
-    color: #1a3a5f;
-}
-
-.stat-label {
-    font-size: 12px;
-    color: #6c757d;
-}
-
-.report-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-link {
-    color: #1a3a5f;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 16px;
-    border: 1px solid #1a3a5f;
-    border-radius: 5px;
-    font-size: 12px;
-    display: inline-block;
-}
-
-.btn-link:hover {
-    background: #1a3a5f;
-    color: white;
-}
-
-.comparison-chart {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin: 30px 0;
-}
-
-.chart-item {
-    background: #f8f9fa;
-    border: 2px solid #1a3a5f;
-    border-radius: 10px;
-    padding: 25px;
-}
-
-.chart-item h3 {
-    color: #1a3a5f;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.chart-bars {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    height: 150px;
-    margin-bottom: 10px;
-}
-
-.bar-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.report-header h5 {
+    color: #2c5282;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
     flex: 1;
 }
 
-.bar {
-    width: 40px;
-    background: #1a3a5f;
-    border-radius: 5px 5px 0 0;
-    margin-bottom: 5px;
+.report-badge {
+    background: #3498db;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: 0.5rem;
 }
 
-.bar-item span {
-    font-size: 12px;
-    color: #333;
+.report-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.report-info {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    background: #e8f4f8;
+    color: #2c5282;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.report-actions {
+    margin-top: auto;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.no-file {
     text-align: center;
-}
-
-.bar-item .value {
-    font-weight: 600;
-    color: #1a3a5f;
-}
-
-.indicators-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin: 30px 0;
-}
-
-.indicator-item {
+    padding: 1rem;
     background: #f8f9fa;
-    border: 2px solid #1a3a5f;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
+    border-radius: 5px;
 }
 
-.indicator-item h3 {
-    color: #1a3a5f;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.indicator-value {
-    font-size: 24px;
-    font-weight: 700;
-    color: #1a3a5f;
-    margin-bottom: 5px;
-}
-
-.indicator-desc {
-    font-size: 12px;
-    color: #6c757d;
-}
-
-.info-box {
-    background: #f8f9fa;
-    border: 2px solid #1a3a5f;
-    border-radius: 10px;
-    padding: 25px;
-    margin: 20px 0;
-}
-
-.info-box h3 {
-    color: #1a3a5f;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
+.action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 </style>
-
 @endsection

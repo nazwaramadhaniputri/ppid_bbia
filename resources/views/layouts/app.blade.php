@@ -9,6 +9,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    <style>
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .dropdown-menu li {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .dropdown-menu li a {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            font-size: 14px;
+        }
+        
+        .dropdown-menu li a:hover {
+            background-color: #f5f5f5;
+            color: #007bff;
+        }
+        
+        .nav-item.dropdown {
+            position: relative;
+        }
+        
+        /* Remove hover effect - only click to open */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -30,12 +72,19 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle">Profil</a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url('/tentang-ppid') }}">Tentang PPID</a></li>
-                            <li><a href="{{ url('/struktur-organisasi') }}">Struktur Organisasi</a></li>
-                            <li><a href="{{ url('/profil-pejabat') }}">Profil Pejabat</a></li>
-                            <li><a href="{{ url('/visi-misi') }}">Visi Misi</a></li>
-                            <li><a href="{{ url('/kontak-ppid') }}">Kontak PPID</a></li>
-                            <li><a href="{{ url('/galeri-foto') }}">Galeri Foto</a></li>
+                            @php
+                                $menuProfils = \App\Models\MenuProfil::active()->ordered()->get();
+                            @endphp
+                            @forelse($menuProfils as $menu)
+                                <li><a href="{{ url($menu->link) }}">{{ $menu->nama_menu }}</a></li>
+                            @empty
+                                <li><a href="{{ url('/tentang-ppid') }}">Tentang PPID</a></li>
+                                <li><a href="{{ url('/tugas-dan-fungsi') }}">Tugas dan Fungsi</a></li>
+                                <li><a href="{{ url('/struktur-organisasi') }}">Struktur Organisasi</a></li>
+                                <li><a href="{{ url('/profil-pejabat') }}">Profil Pejabat</a></li>
+                                <li><a href="{{ url('/visi-misi') }}">Visi Misi</a></li>
+                                <li><a href="{{ url('/kontak-ppid') }}">Kontak PPID</a></li>
+                            @endforelse
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -65,8 +114,11 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{ url('/laporan-tahunan') }}">Laporan Tahunan PPID</a></li>
                             <li><a href="{{ url('/survey-kepuasan-masyarakat') }}">Laporan Survey Kepuasan Masyarakat</a></li>
-                            <li><a href="{{ url('/statistik-layanan') }}">Statistik Layanan Informasi Publik</a></li>
+                            <li><a href="#">Statistik Layanan Informasi Publik</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="btn btn-primary">Permohonan Informasi</a>
                     </li>
                 </ul>
             </div>
@@ -152,9 +204,16 @@
                 });
             });
             
+            // Keep dropdown open when clicking inside
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
             // Close dropdowns when clicking outside
             document.addEventListener('click', function(e) {
-                if (!e.target.matches('.dropdown-toggle')) {
+                if (!e.target.matches('.dropdown-toggle') && !e.target.closest('.dropdown-menu')) {
                     document.querySelectorAll('.dropdown-menu').forEach(menu => {
                         menu.style.display = 'none';
                     });

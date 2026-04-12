@@ -5,85 +5,30 @@
     <div class="page-header-content">
         <h1>Visi dan Misi</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/tentang-ppid') }}">Tentang PPID</a> / Visi dan Misi
         </div>
     </div>
 </div>
 
 <div class="content-section">
     <div class="content-full">
-        <h2>Visi PPID BBIA</h2>
-        <div class="vision-box">
-            <p>Menjadi PPID yang terdepan dalam penyediaan layanan informasi publik yang transparan, akuntabel, dan berkualitas untuk mendukung good governance di lingkungan Balai Besar Industri Agro.</p>
-        </div>
+        @php
+            $profils = \App\Models\Profil::where('is_active', true)
+                ->where('kategori', 'Visi Misi')
+                ->orderBy('urutan')
+                ->get();
+        @endphp
         
-        <h2>Misi PPID BBIA</h2>
-        <div class="mission-grid">
-            <div class="mission-item">
-                <div class="mission-number">1</div>
-                <div class="mission-content">
-                    <h3>Transparansi</h3>
-                    <p>Menyediakan informasi publik yang mudah diakses, cepat, dan terbuka untuk seluruh masyarakat.</p>
-                </div>
+        @forelse($profils as $profil)
+            <div class="vision-content">
+                <h2>{{ $profil->judul }}</h2>
+                <div>{!! $profil->konten !!}</div>
             </div>
-            
-            <div class="mission-item">
-                <div class="mission-number">2</div>
-                    <div class="mission-content">
-                        <h3>Akuntabilitas</h3>
-                        <p>Memastikan setiap informasi yang disediakan akurat, terkini, dan dapat dipertanggungjawabkan.</p>
-                    </div>
-                </div>
-                
-                <div class="mission-item">
-                    <div class="mission-number">3</div>
-                    <div class="mission-content">
-                        <h3>Profesionalisme</h3>
-                        <p>Menyediakan layanan informasi publik yang profesional, ramah, dan sesuai standar yang berlaku.</p>
-                    </div>
-                </div>
-                
-                <div class="mission-item">
-                    <div class="mission-number">4</div>
-                    <div class="mission-content">
-                        <h3>Inovasi</h3>
-                        <p>Terus berinovasi dalam penyediaan layanan informasi publik untuk meningkatkan kualitas dan kemudahan akses.</p>
-                    </div>
-                </div>
+        @empty
+            <div class="vision-box">
+                <p>Informasi visi dan misi sedang dalam pembaruan.</p>
             </div>
-            
-            <h2>Nilai-Nilai</h2>
-            <div class="values-grid">
-                <div class="value-item">
-                    <h3>Integritas</h3>
-                    <p>Berintegritas dalam setiap tindakan dan keputusan terkait informasi publik.</p>
-                </div>
-                
-                <div class="value-item">
-                    <h3>Komitmen</h3>
-                    <p>Berkomitmen untuk memberikan layanan terbaik kepada masyarakat.</p>
-                </div>
-                
-                <div class="value-item">
-                    <h3>Kepedulian</h3>
-                    <p>Selalu memprioritaskan kebutuhan dan kepentingan masyarakat dalam akses informasi.</p>
-                </div>
-                
-                <div class="value-item">
-                    <h3>Kerjasama</h3>
-                    <p>Membangun kerjasama yang baik dengan semua stakeholder terkait.</p>
-                </div>
-            </div>
-            
-            <h2>Sasaran Strategis</h2>
-            <ul>
-                <li>Meningkatkan kepuasan masyarakat terhadap layanan informasi publik BBIA</li>
-                <li>Mempercepat waktu penyelesaian permohonan informasi</li>
-                <li>Meningkatkan kualitas dan kuantitas informasi publik yang tersedia</li>
-                <li>Mengembangkan sistem informasi publik yang berbasis teknologi</li>
-                <li>Meningkatkan kapasitas dan kompetensi SDM PPID</li>
-                <li>Membangun budaya keterbukaan informasi di lingkungan BBIA</li>
-            </ul>
-        </div>
+        @endforelse
     </div>
 </div>
 

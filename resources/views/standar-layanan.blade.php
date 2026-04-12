@@ -5,6 +5,9 @@
     <div class="page-header-content">
         <h1>Standar Layanan</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a>
+            <span>›</span>
+            <span>Standar Layanan</span>
         </div>
     </div>
 </div>
@@ -15,60 +18,48 @@
             <div class="service-icon-large">
                 <img src="{{ asset('images/standar-layanan.png') }}" alt="Standar Layanan">
             </div>
-        </div>
-        
-        <div class="service-content">
-            <h2>Standar Layanan PPID BBIA</h2>
-            <p>PPID BBIA menetapkan standar layanan informasi publik yang harus dipatuhi oleh seluruh unit kerja di lingkungan Balai Besar Industri Agro sesuai dengan peraturan perundang-undangan.</p>
             
-            <div class="info-grid">
-                <div class="info-box">
-                    <h3>Dasar Hukum</h3>
-                    <ul>
-                        <li>Undang-Undang Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik</li>
-                        <li>Peraturan Pemerintah Nomor 61 Tahun 2010 tentang Pelaksanaan UU KIP</li>
-                        <li>Peraturan Komisi Informasi Nomor 1 Tahun 2010 tentang Standar Layanan Informasi Publik</li>
-                        <li>Peraturan internal Kementerian Perindustrian terkait PPID</li>
-                    </ul>
-                </div>
+            <div class="service-content">
+                <h2>Standar Layanan PPID BBIA</h2>
+                <p>PPID BBIA menetapkan standar layanan informasi publik yang harus dipatuhi oleh seluruh unit kerja di lingkungan Balai Besar Industri Agro sesuai dengan peraturan perundang-undangan.</p>
                 
-                <div class="info-box">
-                    <h3>Jangka Waktu Pelayanan</h3>
-                    <ul>
-                        <li><strong>Pemohonan Informasi:</strong> Maksimal 10 hari kerja sejak permohonan diterima</li>
-                        <li><strong>Keberatan:</strong> Maksimal 14 hari kerja sejak permohonan keberatan diterima</li>
-                        <li><strong>Sengketa Informasi:</strong> Maksimal 100 hari kerja sejak pengajuan sengketa informasi ke Komisi Informasi</li>
-                        <li><strong>Biaya:</strong> Tidak dipungut biaya untuk pemohonan informasi publik</li>
-                    </ul>
-                </div>
+                @php
+                    $standars = \App\Models\StandarLayanan::where('is_active', true)->orderBy('urutan')->get();
+                @endphp
                 
-                <div class="info-box">
-                    <h3>Jam Pelayanan</h3>
-                    <ul>
-                        <li>Senin - Kamis: 08:00 - 16:00 WIB</li>
-                        <li>Senin - Jumat: Libur</li>
-                    </ul>
-                </div>
+                @forelse($standars as $standar)
+                    <div class="standar-item">
+                        <div class="standar-header">
+                            <h3>{{ $standar->jenis }}</h3>
+                            <div class="standar-meta">
+                                <span class="meta-item">⏱️ {{ $standar->waktu }}</span>
+                                <span class="meta-item">💰 {{ $standar->biaya }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="standar-content">
+                            <div class="standar-section">
+                                <h4>📦 Produk Layanan</h4>
+                                <p>{{ $standar->produk }}</p>
+                            </div>
+                            
+                            <div class="standar-section">
+                                <h4>📋 Prosedur Pelayanan</h4>
+                                <div class="prosedur-content">
+                                    {!! nl2br(e($standar->prosedur)) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="info-box">
+                        <p>Standar layanan sedang dalam pembaruan. Silakan kembali lagi nanti.</p>
+                    </div>
+                @endforelse
                 
-                <div class="info-box">
-                    <h3>Sarana dan Cara Pelayanan</h3>
-                    <ul>
-                        <li><strong>Langsung:</strong> Permohonan dapat diajukan langsung di kantor PPID BBIA</li>
-                        <li><strong>Online:</strong> Permohonan dapat diajukan melalui website atau email</li>
-                        <li><strong>Telepon:</strong> Permohonan informasi dapat diajukan melalui telepon</li>
-                        <li><strong>Fax:</strong> Permohonan informasi dapat diajukan melalui fax</li>
-                    </ul>
-                </div>
-                
-                <div class="info-box">
-                    <h3>Tata Cara Pelayanan</h3>
-                    <ul>
-                        <li><strong>Verifikasi:</strong> PPID BBIA akan memverifikasi kebenaran informasi yang diminta sebelum memberikan informasi tersebut</li>
-                        <li><strong>Konfirmasi:</strong> PPID BBIA akan memberikan konfirmasi atas kebenaran informasi yang diminta</li>
-                        <li><strong>Pemberitahuan:</strong> Informasi yang telah disediakan akan diberitahukan kepada pemohon</li>
-                        <li><strong>Pemutakhiran:</strong> Informasi publik akan dimutakhirkan secara berkala dan disediakan dalam daftar informasi publik</li>
-                        <li><strong>Pengaduan:</strong> PPID BBIA akan menangani pengaduan atas sengketa informasi yang diajukan oleh pemohon</li>
-                    </ul>
+                <div class="action-buttons">
+                    <a href="{{ url('/form-permohonan') }}" class="btn btn-primary">Ajukan Permohonan</a>
+                    <a href="{{ url('/informasi-publik') }}" class="btn btn-outline">Lihat Informasi Publik</a>
                 </div>
             </div>
         </div>
@@ -76,166 +67,82 @@
 </div>
 
 <style>
-.page-header {
-    background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
+.standar-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.standar-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.standar-header {
+    background: linear-gradient(135deg, #0f2338 0%, #2c5282 100%);
     color: white;
-    padding: 40px 0;
-    margin: 0 0 40px 0;
-    width: 100%;
-    left: 0;
-    right: 0;
+    padding: 1.5rem;
 }
 
-.page-header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 60px;
+.standar-header h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
 }
 
-.page-header h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 10px;
-}
-
-.breadcrumb {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-.breadcrumb a {
-    color: white;
-    text-decoration: none;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-.content-section {
-    width: 100%;
-    padding: 0 20px;
-    min-height: 60vh;
-}
-
-.content-full {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 40px;
-    background: transparent;
-}
-
-.content-full h2 {
-    color: #1a3a5f;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 40px;
-}
-
-.content-full h2:first-child {
-    margin-top: 0;
-}
-
-.content-full h3 {
-    color: #1a3a5f;
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    margin-top: 30px;
-}
-
-.content-full h3:first-child {
-    margin-top: 0;
-}
-
-.content-full p {
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 16px;
-}
-
-.service-detail {
+.standar-meta {
     display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 40px;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.service-icon-large {
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(135deg, rgba(26, 82, 130, 0.1), rgba(44, 130, 201, 0.1));
+.meta-item {
+    background: rgba(255,255,255,0.2);
+    padding: 0.25rem 0.75rem;
     border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
+    font-size: 0.9rem;
 }
 
-.service-icon-large img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
+.standar-content {
+    padding: 1.5rem;
 }
 
-.service-content {
-    flex: 1;
+.standar-section {
+    margin-bottom: 1.5rem;
 }
 
-.service-content h2 {
-    color: #1a3a5f;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 15px;
+.standar-section:last-child {
+    margin-bottom: 0;
 }
 
-.service-content p {
-    color: #333;
+.standar-section h4 {
+    color: #2c5282;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.standar-section p {
+    color: #666;
+    margin: 0;
     line-height: 1.6;
-    margin-bottom: 20px;
-    font-size: 16px;
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 40px;
+.prosedur-content {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 5px;
+    border-left: 3px solid #3498db;
+    line-height: 1.6;
+    color: #555;
 }
 
-.info-box {
-    background: rgba(26, 82, 130, 0.1);
-    border: 1px solid rgba(26, 82, 130, 0.1);
-    border-radius: 15px;
-    padding: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.info-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.info-box h3 {
-    color: #1a3a5f;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.info-box ul {
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    padding-left: 25px;
-}
-
-.info-box li {
-    margin-bottom: 12px;
-    font-size: 16px;
+.action-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 </style>
-
 @endsection

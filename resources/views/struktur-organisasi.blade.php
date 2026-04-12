@@ -5,57 +5,30 @@
     <div class="page-header-content">
         <h1>Struktur Organisasi</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/tentang-ppid') }}">Tentang PPID</a> / Struktur Organisasi
         </div>
     </div>
 </div>
 
 <div class="content-section">
     <div class="content-full">
-        <h2>Struktur Organisasi PPID BBIA</h2>
-        <p>PPID BBIA merupakan bagian dari struktur organisasi Balai Besar Industri Agro yang bertanggung jawab langsung kepada Kepala BBIA.</p>
+        @php
+            $profils = \App\Models\Profil::where('is_active', true)
+                ->where('kategori', 'Struktur Organisasi')
+                ->orderBy('urutan')
+                ->get();
+        @endphp
         
-        <h2>Struktur Kepemimpinan</h2>
-        <div class="org-structure">
-            <div class="org-box">
-                <h3>Kepala BBIA</h3>
-                <p>Menetapkan PPID dan bertanggung jawab atas pelaksanaan tugas PPID</p>
+        @forelse($profils as $profil)
+            <div class="org-content">
+                <h2>{{ $profil->judul }}</h2>
+                <div>{!! $profil->konten !!}</div>
             </div>
-            
+        @empty
             <div class="org-box">
-                <h3>Pejabat Pengelola Informasi dan Dokumentasi</h3>
-                <p>Merupakan pejabat yang ditetapkan untuk melaksanakan tugas PPID sehari-hari</p>
+                <p>Informasi struktur organisasi sedang dalam pembaruan.</p>
             </div>
-            
-            <div class="org-box">
-                <h3>Koordinator PPID</h3>
-                    <p>Membantu PPID dalam koordinasi dan pelaksanaan tugas</p>
-                </div>
-                
-                <div class="org-box">
-                    <h3>Staf PPID</h3>
-                    <p>Melaksanakan tugas teknis dan administratif layanan informasi</p>
-                </div>
-            </div>
-            
-            <h2>Unit Pelaksana PPID</h2>
-            <p>Dalam melaksanakan tugasnya, PPID BBIA didukung oleh:</p>
-            <ul>
-                <li><strong>Unit Pelayanan Informasi:</strong> Melayani permohonan informasi langsung</li>
-                <li><strong>Unit Dokumentasi:</strong> Mengelola dokumen dan arsip informasi</li>
-                <li><strong>Unit Verifikasi:</strong> Memverifikasi kebenaran informasi</li>
-                <li><strong>Unit Publikasi:</strong> Memublikasikan informasi berkala</li>
-            </ul>
-            
-            <h2>Hubungan Kerja</h2>
-            <p>PPID BBIA menjalin hubungan kerja dengan:</p>
-            <ul>
-                <li>Unit kerja lain di lingkungan BBIA</li>
-                <li>PPID Kementerian Perindustrian</li>
-                <li>PPID Pelaksana UPT di bawah Kemenperin</li>
-                <li>Komisi Informasi Pusat</li>
-                <li>Lembaga terkait lainnya</li>
-            </ul>
-        </div>
+        @endforelse
     </div>
 </div>
 

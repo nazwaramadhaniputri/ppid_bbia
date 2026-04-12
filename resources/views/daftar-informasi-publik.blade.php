@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="page-header">
-    <div class="page-header-content">
+<div class="container">
+    <div class="page-header">
         <h1>Daftar Informasi Publik Online</h1>
         <div class="breadcrumb">
+            <a href="{{ url('/ppid') }}">Beranda</a> / <a href="{{ url('/informasi-publik') }}">Informasi Publik</a> / Daftar Informasi Publik Online
         </div>
     </div>
-</div>
-
-<div class="content-section">
-    <div class="content-full">
-        <h2>Daftar Informasi Publik PPID BBIA</h2>
-        <p>Berikut adalah daftar lengkap informasi publik yang tersedia secara online di PPID BBIA.</p>
+    
+    <div class="content-section">
+        <div class="content-card">
+            <h2>Daftar Informasi Publik PPID BBIA</h2>
+            <p>Berikut adalah daftar lengkap informasi publik yang tersedia secara online di PPID BBIA.</p>
             
             <div class="search-section">
                 <div class="search-box">
@@ -100,19 +100,19 @@
             <div class="format-section">
                 <h2>Format Informasi</h2>
                 <div class="format-grid">
-                    <div class="format-item cardbox">
+                    <div class="format-item">
                         <h3>📄 PDF</h3>
                         <p>Dokumen dalam format PDF untuk diunduh</p>
                     </div>
-                    <div class="format-item cardbox">
+                    <div class="format-item">
                         <h3>📊 Excel</h3>
                         <p>Data dalam format Excel untuk analisis</p>
                     </div>
-                    <div class="format-item cardbox">
+                    <div class="format-item">
                         <h3>🌐 HTML</h3>
                         <p>Informasi dalam format web untuk dibaca online</p>
                     </div>
-                    <div class="format-item cardbox">
+                    <div class="format-item">
                         <h3>📱 Mobile</h3>
                         <p>Tampilan mobile-friendly untuk akses mudah</p>
                     </div>
@@ -145,19 +145,10 @@
 
 <style>
 .page-header {
-    background: linear-gradient(135deg, #0f2338 0%, #2c5282 35%, #1a3a5f 100%);
+    background: linear-gradient(135deg, #1a3a5f, #2c5282);
     color: white;
     padding: 40px 0;
-    margin: 0 0 40px 0;
-    width: 100%;
-    left: 0;
-    right: 0;
-}
-
-.page-header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 60px;
+    margin-bottom: 40px;
 }
 
 .page-header h1 {
@@ -169,47 +160,6 @@
 .breadcrumb {
     font-size: 14px;
     opacity: 0.8;
-}
-
-.breadcrumb a {
-    color: white;
-    text-decoration: none;
-}
-
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-.content-section {
-    width: 100%;
-    padding: 0 20px;
-    min-height: 60vh;
-}
-
-.content-full {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 40px;
-    background: transparent;
-}
-
-.content-full h2 {
-    color: #1a3a5f;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    margin-top: 40px;
-}
-
-.content-full h2:first-child {
-    margin-top: 0;
-}
-
-.content-full p {
-    color: #333;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    font-size: 16px;
 }
 
 .breadcrumb a {
@@ -357,19 +307,6 @@
 .format-item {
     text-align: center;
     padding: 20px;
-}
-
-.format-item.cardbox {
-    background: white;
-    border: 2px solid rgba(26, 58, 95, 0.1);
-    border-radius: 15px;
-    padding: 25px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.format-item.cardbox:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .format-item h3 {

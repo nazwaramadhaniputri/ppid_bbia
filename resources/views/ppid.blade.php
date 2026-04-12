@@ -28,11 +28,13 @@
                         <a href="#" class="nav-link dropdown-toggle">Profil</a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ url('/tentang-ppid') }}">Tentang PPID</a></li>
+                            <li><a href="{{ url('/tugas-dan-fungsi') }}">Tugas dan Fungsi</a></li>
                             <li><a href="{{ url('/struktur-organisasi') }}">Struktur Organisasi</a></li>
                             <li><a href="{{ url('/profil-pejabat') }}">Profil Pejabat</a></li>
                             <li><a href="{{ url('/visi-misi') }}">Visi Misi</a></li>
                             <li><a href="{{ url('/kontak-ppid') }}">Kontak PPID</a></li>
                             <li><a href="{{ url('/galeri-foto') }}">Galeri Foto</a></li>
+                            <li><a href="{{ url('/ppid-pelaksana-upt') }}">PPID Pelaksana UPT</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -64,6 +66,9 @@
                             <li><a href="{{ url('/survey-kepuasan-masyarakat') }}">Laporan Survey Kepuasan Masyarakat</a></li>
                             <li><a href="{{ url('/statistik-layanan') }}">Statistik Layanan Informasi Publik</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url('/form-permohonan') }}" class="btn btn-primary">Permohonan Informasi</a>
                     </li>
                 </ul>
             </div>
@@ -98,12 +103,12 @@
                     <div class="service-box">
                         <h3>AJUKAN</h3>
                         <p>Ajukan permohonan informasi publik</p>
-                        <a href="{{ url('/form-permohonan') }}" class="service-link">Form Permohonan →</a>
+                        <a href="{{ url('/ajukan') }}" class="service-link">Form Permohonan →</a>
                     </div>
                     <div class="service-box">
                         <h3>KEBERATAN</h3>
                         <p>Ajukan keberatan atas layanan informasi</p>
-                        <a href="{{ url('/form-keberatan') }}" class="service-link">Form Keberatan →</a>
+                        <a href="{{ url('/keberatan') }}" class="service-link">Form Keberatan →</a>
                     </div>
                 </div>
                 
@@ -125,7 +130,7 @@
                         </a>
                     </div>
                     <div class="service-icon-item">
-                        <a href="{{ url('/periksa-permohonan') }}">
+                        <a href="{{ url('/pemeriksaan-permohonan') }}">
                             <div class="icon-box">
                                 <img src="{{ asset('images/periksa permohonan.png') }}" alt="Periksa Permohonan">
                             </div>
@@ -133,7 +138,7 @@
                         </a>
                     </div>
                     <div class="service-icon-item">
-                        <a href="{{ url('/periksa-keberatan') }}">
+                        <a href="{{ url('/pemeriksaan-keberatan') }}">
                             <div class="icon-box">
                                 <img src="{{ asset('images/periksa keberatan.png') }}" alt="Periksa Keberatan">
                             </div>
@@ -146,6 +151,14 @@
                                 <img src="{{ asset('images/statistik layanan.png') }}" alt="Statistik Layanan">
                             </div>
                             <span>Statistik Layanan</span>
+                        </a>
+                    </div>
+                    <div class="service-icon-item">
+                        <a href="{{ url('/open-data') }}">
+                            <div class="icon-box">
+                                <img src="{{ asset('images/open data.png') }}" alt="Open Data">
+                            </div>
+                            <span>Open Data</span>
                         </a>
                     </div>
                     <div class="service-icon-item">
@@ -171,9 +184,9 @@
                     <article class="news-card">
                         <div class="news-image">
                             @if ($berita->gambar)
-                                <img src="{{ asset($berita->gambar) }}" alt="{{ $berita->judul }}">
+                                <img src="{{ asset($berita->gambar) }}" alt="{{ $berita->judul }}" onerror="console.log('Image failed: {{ asset($berita->gambar) }}'); this.src='{{ asset('images/beranda.jpg') }}'">
                             @else
-                                <img src="{{ asset('images/news-1.jpg') }}" alt="{{ $berita->judul }}">
+                                <img src="{{ asset('images/beranda.jpg') }}" alt="{{ $berita->judul }}">
                             @endif
                         </div>
                         <div class="news-content">
