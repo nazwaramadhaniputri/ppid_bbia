@@ -27,8 +27,8 @@
 
         /* ===================== SIDEBAR ===================== */
         .sidebar {
-            width: 275px;
-            background: linear-gradient(180deg, #0f2338 0%, #0a1825 100%);
+            width: 70px;
+            background: #0f2338;
             color: white;
             transition: width 0.3s ease;
             position: fixed;
@@ -42,12 +42,11 @@
             flex-direction: column;
             box-shadow: 4px 0 15px rgba(0,0,0,0.2);
         }
-
-        /* Custom scrollbar for sidebar */
-        .sidebar::-webkit-scrollbar { width: 3px; }
-        .sidebar::-webkit-scrollbar-track { background: transparent; }
-        .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
-
+        
+        .sidebar:hover {
+            width: 250px;
+        }
+        
         .sidebar-header {
             padding: 1rem;
             background: rgba(0,0,0,0.2);
@@ -72,87 +71,36 @@
         }
 
         .bbia-icon svg {
-            width: 32px;
-            height: 32px;
-            fill: white;
+            width: 24px !important;
+            height: 24px !important;
+            fill: white !important;
+            transition: all 0.3s ease;
         }
-
+        
+        .sidebar:hover .bbia-icon {
+            margin-right: 0.75rem !important;
+        }
+        
+        .sidebar:hover .bbia-icon svg {
+            width: 32px !important;
+            height: 32px !important;
+        }
+        
+        .sidebar:hover .sidebar-header {
+            justify-content: flex-start;
+            padding: 1rem 1.5rem;
+        }
+        
         .sidebar-header h2 {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            color: white;
-            margin: 0 0 0 0.75rem;
-            opacity: 1;
-            white-space: nowrap;
-            transition: opacity 0.2s ease;
-        }
-
-        /* ===================== SIDEBAR MENU ===================== */
-        .sidebar-menu {
-            list-style: none;
-            padding: 0.75rem 0;
             margin: 0;
-            flex: 1;
+            font-size: 0;
+            font-weight: 600;
+            transition: font-size 0.3s ease;
+            opacity: 0;
         }
-
-        .sidebar-menu li a {
-            display: flex;
-            align-items: center;
-            padding: 0.8rem 1.2rem;
-            color: rgba(255, 255, 255, 0.65);
-            text-decoration: none;
-            transition: all 0.25s ease;
-            white-space: nowrap;
-            font-size: 0.875rem;
-            border-left: 3px solid transparent;
-            gap: 0.85rem;
-        }
-
-        .sidebar-menu li a i {
-            width: 20px;
-            text-align: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-
-        .sidebar-menu li a span {
-            opacity: 1;
-            transition: opacity 0.2s ease;
-        }
-
-        .sidebar-menu li a:hover {
-            background: rgba(255, 255, 255, 0.08);
-            color: white;
-            border-left-color: rgba(59, 130, 246, 0.6);
-        }
-
-        .sidebar-menu li a.active {
-            background: rgba(59, 130, 246, 0.18);
-            color: #60a5fa;
-            border-left-color: #3b82f6;
-        }
-
-        .sidebar-menu li a.active i {
-            color: #60a5fa;
-        }
-
-        .sidebar-menu li.divider {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.07);
-            margin: 0.5rem 1rem;
-        }
-
-        /* ===================== DROPDOWN PROFIL ===================== */
-        .dropdown-toggle {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .dropdown-arrow {
-            margin-left: auto !important;
-            transition: transform 0.3s ease;
-            font-size: 11px !important;
+        
+        .sidebar:hover .sidebar-header h2 {
+            font-size: 1.2rem;
             opacity: 1;
             width: auto !important;
         }
@@ -160,55 +108,24 @@
         .dropdown-toggle.open .dropdown-arrow {
             transform: rotate(180deg);
         }
-
-        /* Submenu */
-        .submenu {
+        
+        .sidebar-menu {
             list-style: none;
             padding: 0;
             margin: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, opacity 0.3s ease;
-            opacity: 0;
-            background: rgba(0, 0, 0, 0.15);
         }
-
-        .submenu.show {
-            max-height: 600px;
-            opacity: 1;
+        
+        .sidebar-menu li {
+            /* Remove border separator */
         }
-
-        .submenu li a {
-            padding: 0.65rem 1.2rem 0.65rem 3.2rem !important;
-            font-size: 0.82rem !important;
-            color: rgba(255, 255, 255, 0.55) !important;
-            border-left: 3px solid transparent !important;
-            white-space: normal !important;
-            line-height: 1.4;
+        
+        .sidebar-menu li.divider {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin: 0.5rem 0;
         }
-
-        .submenu li a i {
-            font-size: 8px !important;
-            width: 10px !important;
-        }
-
-        .submenu li a:hover {
-            background: rgba(255, 255, 255, 0.06) !important;
-            color: rgba(255, 255, 255, 0.9) !important;
-            padding-left: 3.5rem !important;
-            border-left-color: rgba(59, 130, 246, 0.4) !important;
-        }
-
-        .submenu li a.active {
-            background: rgba(59, 130, 246, 0.15) !important;
-            color: #60a5fa !important;
-            border-left-color: #3b82f6 !important;
-        }
-
-        /* Active parent state */
-        li a.dropdown-toggle.open {
-            background: rgba(59, 130, 246, 0.1);
-            color: rgba(255, 255, 255, 0.9);
+        
+        .sidebar-menu li.divider:first-child {
+            display: none;
         }
 
         /* ===================== ADMIN PROFILE ===================== */
@@ -230,48 +147,60 @@
             font-weight: 700;
             font-size: 0.875rem;
             color: white;
-            flex-shrink: 0;
-            margin: 0;
-            transition: margin 0.3s ease;
-        }
-
-        .admin-profile-inner {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .admin-info {
-            opacity: 1;
-            transition: opacity 0.2s ease;
-            overflow: hidden;
-        }
-
-        .admin-name {
-            font-size: 0.8rem;
             font-weight: 600;
+            font-size: 16px;
+            margin: 0 auto 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .sidebar:hover .admin-avatar {
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+        }
+        
+        .admin-name {
+            font-size: 0;
             color: white;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 160px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.3s ease;
         }
-
-        .admin-role {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.5);
+        
+        .sidebar:hover .admin-name {
+            font-size: 0.9rem;
+            opacity: 1;
         }
-
+        
         .admin-actions {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .admin-actions a {
             display: flex;
             gap: 0.5rem;
-            margin-top: 0.6rem;
-            opacity: 1;
-            transition: opacity 0.2s ease;
         }
-
-        .admin-actions a,
-        .admin-actions button {
+        
+        .sidebar:hover .admin-actions a {
+            font-size: 0.8rem;
+            opacity: 1;
+            padding: 0.5rem;
+        }
+        
+        .admin-actions a:hover {
+            color: white;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        
+        .admin-actions a i {
+            font-size: 12px;
+        }
+        
+        .sidebar-menu a {
             display: flex;
             align-items: center;
             gap: 0.35rem;
@@ -305,20 +234,17 @@
 
         /* ===================== MAIN CONTENT ===================== */
         .main-content {
-            margin-left: 275px;
             flex: 1;
-            padding: 0;
-            transition: margin-left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            will-change: margin-left;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            margin-left: 0;
+            transition: margin-left 0.3s ease;
         }
 
         .top-bar {
             background: white;
-            padding: 0.5rem 1.75rem;
-            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -558,19 +484,40 @@
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 768px) {
             .sidebar {
-                left: -275px;
+                position: fixed;
+                left: -70px;
+                z-index: 1000;
+                height: 100vh;
             }
 
             .sidebar.show {
                 left: 0;
+                width: 275px;
             }
 
+            .sidebar:hover ~ .main-content,
             .sidebar.show ~ .main-content {
                 margin-left: 0;
             }
 
+            .sidebar.show .sidebar-menu li a span,
+            .sidebar.show .sidebar-header h2,
+            .sidebar.show .admin-info,
+            .sidebar.show .admin-actions,
+            .sidebar.show .dropdown-arrow {
+                opacity: 1;
+            }
+
+            .sidebar.show .admin-avatar {
+                margin: 0;
+            }
+            
             .main-content {
                 margin-left: 0;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: 1fr;
             }
         }
     </style>
